@@ -1,0 +1,100 @@
+---
+title: "How to use MARS package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{mars}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+## Multivariate Adaptive Regression Splines (MARS)
+
+
+**Description**
+
+
+Fit Friedman's Multivariate Adaptive Regression Splines (MARS) model. It is an extension of linear model that can model non-linearity. Suitable for higher dimensional inputs.
+
+
+
+
+**Usage** 
+
+ mars (formula, data, control = NULL)
+ 
+ 
+**Arguments**
+
+
+ Formula  : an R formula
+ Data : a data frame containing data for use in the model
+ Control : an optional object of class 'mars.control'
+ 
+ 
+ 
+**Details**
+
+The model we receive at the end from the mars algorithm is a many basis functions in a linear combination, found by least squares. It uses the collection of functions comprised of reflected pairs for each input x with knots at each observed value xij of that input. If all input are distinct, then set C contains 2np functions.We input a formula, data frame & control object. It uses step-wise algorithms to fit. 
+
+
+
+**Value**
+
+an object of mars which has the model 
+
+
+
+**Author(s) **
+
+Ajay behal, Lei Liu, Linden Gueck
+
+
+
+
+**References **
+
+Jerome H. Friedman. Multivariate Adaptive Regression Splines (with discussion).Annals of Statistics 19/1, 1991. https://statistics.stanford.edu/research/multivariate-adaptive-regression-splines. 
+
+
+
+
+
+**See Also**
+
+mars.control for constructing control objects
+
+plot.mars for plotting results 
+
+predict.mars for predictions
+
+summary.mars for summarizing mars objects
+
+print.mars for printing mars objects
+
+
+
+
+
+**Examples**
+
+mm <- mars(y~.,dat = mars ::marstestdata)
+
+mm <- mars(y~x1+x2,data = marstestdata, mars.control(Mmax=4))
+
+mc = mars.control()
+
+mm = mars(y~., data= marstestdata, control=mc)
+
+
+
+
+
+
